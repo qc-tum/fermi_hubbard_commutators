@@ -1002,7 +1002,7 @@ class SumOp(HamiltonianOp):
         L = len(supp)
         adj = np.zeros((L, L), dtype=int)
         for term in self.terms:
-            # assuming that operators in a term connot be further partitioned
+            # assuming that operators in a term cannot be further partitioned
             slist = [supp.index(s) for s in term.support()]
             for i in slist:
                 for j in slist:
