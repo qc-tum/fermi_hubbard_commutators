@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "fh_comm"
+version = "1.0.0"
+description = "Evaluating Trotter splitting errors based on commutator scaling for the Fermi-Hubbard model"
+readme = "README.rst"
+authors = [{ name = "Christian B. Mendl", email = "christian.b.mendl@gmail.com" }]
+license = { text = "Apache-2.0" }
+requires-python = ">=3.7"
+dependencies = [
+    "numpy",
+    "scipy",
+]
+
+[project.urls]
+Homepage = "https://github.com/qc-tum/fermi_hubbard_commutators"
