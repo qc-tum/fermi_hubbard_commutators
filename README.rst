@@ -11,10 +11,11 @@ Python package for evaluating nested commutators between fermionic operators and
 Documentation
 -------------
 The following tutorials provide an introduction to the main concepts and features of *fh_comm*:
-* `Hamiltonian operators <doc/hamiltonian_operators.ipynb>`_
-* `Lattice translations <doc/lattice_translations.ipynb>`_
-* `Splitting methods <doc/splitting_methods.ipynb>`_
-* `Commutator bounds <doc/commutator_bounds.ipynb>`_
+
+- `Hamiltonian operators <doc/hamiltonian_operators.ipynb>`_
+- `Lattice translations <doc/lattice_translations.ipynb>`_
+- `Splitting methods <doc/splitting_methods.ipynb>`_
+- `Commutator bounds <doc/commutator_bounds.ipynb>`_
 
 The full documentation is available at `fermi-hubbard-commutators.readthedocs.io <https://fermi-hubbard-commutators.readthedocs.io>`_.
 
