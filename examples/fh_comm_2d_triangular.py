@@ -22,7 +22,8 @@ def main():
     # construct the Fermi-Hubbard Hamiltonian operators on a 2D triangular lattice
     # kinetic terms
     hk = [fhc.SumOp([fhc.HoppingOp(( 0,  0,  0), hexcoords[i], s, v) for s in [0, 1]] +
-                    [fhc.HoppingOp(hexcoords[i], hexcoords[(i + 1) % 6], s, v) for s in [0, 1]]) for i in range(6)]
+                    [fhc.HoppingOp(( 0,  0,  0), hexcoords[(i + 1) % 6], s, v) for s in [0, 1]] +
+                    [fhc.HoppingOp(hexcoords[i], hexcoords[(i + 1) % 6], s, v) for s in [0, 1]]) for i in range(0, 6, 2)]
     # interaction term
     hu = fhc.SumOp([fhc.ProductOp([fhc.NumberOp(( 0,  0,  0), s, 1) for s in [0, 1]], u)] +
                    [fhc.ProductOp([fhc.NumberOp(hexcoords[i], s, 1) for s in [0, 1]], Fraction(u, 3)) for i in range(6)])
@@ -38,11 +39,11 @@ def main():
     print("tab2[0][1][2]:", tab2[0][1][2])
     print("tab2[0][1][2].norm_bound():", tab2[0][1][2].norm_bound())
     # example
-    print("tab2[0][6][1]:", tab2[0][6][1])
-    print("tab2[0][6][1].norm_bound():", tab2[0][6][1].norm_bound())
+    print("tab2[0][3][1]:", tab2[0][3][1])
+    print("tab2[0][3][1].norm_bound():", tab2[0][3][1].norm_bound())
     # example
-    print("tab4[0][6][6][6][6]:", tab4[0][6][6][6][6])
-    print("tab4[0][6][6][6][6].norm_bound():", tab4[0][6][6][6][6].norm_bound())
+    print("tab4[0][3][3][3][3]:", tab4[0][3][3][3][3])
+    print("tab4[0][3][3][3][3].norm_bound():", tab4[0][3][3][3][3].norm_bound())
 
     for methname in ["Strang", "Suzuki4"]:
         print(80 * "_")
