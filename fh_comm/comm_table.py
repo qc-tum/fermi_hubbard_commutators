@@ -1,8 +1,8 @@
 from collections.abc import Sequence
-from .lattice import SubLattice
-from .hamiltonian_ops import HamiltonianOp
-from .commutator import commutator, commutator_translation
-from .simplification import simplify, translate_origin
+from fh_comm.lattice import SubLattice
+from fh_comm.hamiltonian_ops import HamiltonianOp
+from fh_comm.commutator import commutator, commutator_translation
+from fh_comm.simplification import simplify, translate_origin
 
 
 class NestedCommutatorTable:

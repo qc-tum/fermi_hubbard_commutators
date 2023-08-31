@@ -1,8 +1,8 @@
 import math
 from fractions import Fraction
 import numpy as np
-from .combinatorics import multinomial, integer_sum_tuples
-from .splitting_method import SplittingMethod
+from fh_comm.combinatorics import multinomial, integer_sum_tuples
+from fh_comm.splitting_method import SplittingMethod
 
 
 class WeightedNestedCommutator:

@@ -1,6 +1,6 @@
 from collections.abc import Sequence
-from .lattice import SubLattice
-from .hamiltonian_ops import HamiltonianOp, HoppingOp, AntisymmHoppingOp, NumberOp, ZeroOp, ProductOp, SumOp
+from fh_comm.lattice import SubLattice
+from fh_comm.hamiltonian_ops import HamiltonianOp, HoppingOp, AntisymmHoppingOp, NumberOp, ZeroOp, ProductOp, SumOp
 
 
 def commutator(a: HamiltonianOp, b: HamiltonianOp) -> HamiltonianOp:

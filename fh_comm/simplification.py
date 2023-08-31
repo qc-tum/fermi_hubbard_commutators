@@ -2,9 +2,9 @@ from numbers import Rational
 from fractions import Fraction
 from warnings import warn
 import numpy as np
-from .hamiltonian_ops import HamiltonianOp, ZeroOp, ProductOp, SumOp, NumberOp
-from .commutator import commutator
-from .lattice import SubLattice
+from fh_comm.hamiltonian_ops import HamiltonianOp, ZeroOp, ProductOp, SumOp, NumberOp
+from fh_comm.commutator import commutator
+from fh_comm.lattice import SubLattice
 
 
 def simplify(h: HamiltonianOp) -> HamiltonianOp:

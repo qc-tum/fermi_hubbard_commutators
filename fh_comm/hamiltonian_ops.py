@@ -5,7 +5,7 @@ from numbers import Rational
 from collections.abc import Sequence
 from warnings import warn
 import numpy as np
-from .field_ops import FieldOpType, ElementaryFieldOp, ProductFieldOp, FieldOp
+from fh_comm.field_ops import FieldOpType, ElementaryFieldOp, ProductFieldOp, FieldOp
 
 
 @total_ordering

@@ -5,7 +5,7 @@ from collections.abc import Sequence
 from functools import cache
 import numpy as np
 from scipy import sparse
-from .lattice import latt_coord_to_index, SubLattice
+from fh_comm.lattice import latt_coord_to_index, SubLattice
 
 
 class FieldOpType(enum.Enum):
