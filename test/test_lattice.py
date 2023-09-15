@@ -50,6 +50,17 @@ class TestLattice(unittest.TestCase):
                 ptlist = sublatt.instantiate([-10, -13, -7, -11][:sdim], [12, 29, 17, 14][:sdim])
                 for pt in ptlist:
                     self.assertTrue(sublatt.contains(pt))
+        # nearest center
+        sublatt = fhc.SubLattice(np.array([(3, 0, -3), (0, 3, -3)]).T)
+        ptlist = np.array([( 0,  0,  0), (-3, -3,  6)])
+        c = sublatt.nearest_center(ptlist)
+        self.assertTrue(sublatt.contains(c))
+        d_ref = sum(np.dot(pt - c, pt - c) for pt in ptlist)
+        for i in (-1, 0, 1):
+            for j in (-1, 0, 1):
+                w = i*sublatt.basis[:, 0] + j*sublatt.basis[:, 1]
+                d = sum(np.dot(pt - w, pt - w) for pt in ptlist)
+                self.assertTrue(d_ref <= d)
 
 
 if __name__ == "__main__":

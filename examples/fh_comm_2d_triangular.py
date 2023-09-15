@@ -29,7 +29,7 @@ def main():
                    [fhc.ProductOp([fhc.NumberOp(hexcoords[i], s, 1) for s in [0, 1]], Fraction(u, 3)) for i in range(6)])
     hlist = hk + [hu]
 
-    comm_tab = fhc.NestedCommutatorTable(hlist, 5, translatt, bias=1e-8)
+    comm_tab = fhc.NestedCommutatorTable(hlist, 5, translatt)
     tab1 = comm_tab.table(1)
     tab2 = comm_tab.table(2)
     tab4 = comm_tab.table(4)

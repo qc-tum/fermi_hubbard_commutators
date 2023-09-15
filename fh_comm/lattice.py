@@ -67,6 +67,25 @@ class SubLattice:
         x = np.array(np.around(x), dtype=int)
         return tuple(self.basis @ x)
 
+    def nearest_center(self, vlist):
+        """
+        Determine the sub-lattice point minimizing the squared distances to the points in `vlist`.
+        """
+        vlist = np.asarray(vlist)
+        # use nearest point to geometric center as initial guess
+        c = self.nearest_point(np.mean(vlist, axis=0))
+        d_min = None
+        w_min = None
+        for x in product((-1, 0, 1), repeat=self.basis.shape[1]):
+            w = tuple(c + self.basis @ np.array(x))
+            # not using np.norm here to retain integers
+            d = sum(np.dot(v - w, v - w) for v in vlist)
+            # use lexicographic order if otherwise equal
+            if d_min is None or d < d_min or (d == d_min and w < w_min):
+                d_min = d
+                w_min = w
+        return w_min
+
     def contains(self, v) -> bool:
         """
         Determine whether `v` is a point of the sub-lattice.

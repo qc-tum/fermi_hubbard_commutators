@@ -23,7 +23,7 @@ def main():
     print("[h0, h1]:", fhc.commutator_translation(h0, h1, translatt))
     print("[h0, h4]:", fhc.commutator_translation(h0, h4, translatt))
 
-    comm_tab = fhc.NestedCommutatorTable(hlist, 5, translatt, bias=1e-8)
+    comm_tab = fhc.NestedCommutatorTable(hlist, 5, translatt)
     tab1 = comm_tab.table(1)
     tab2 = comm_tab.table(2)
     tab4 = comm_tab.table(4)

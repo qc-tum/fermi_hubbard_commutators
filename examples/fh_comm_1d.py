@@ -11,10 +11,11 @@ def trotterized_time_evolution(hlist, method: fhc.SplittingMethod, dt: float, ns
     """
     V = None
     for i, c in zip(method.indices, method.coeffs):
+        Vi = scipy.linalg.expm(-1j*c*dt*hlist[i])
         if V is None:
-            V = scipy.linalg.expm(-1j*c*dt*hlist[i])
+            V = Vi
         else:
-            V = scipy.linalg.expm(-1j*c*dt*hlist[i]) @ V
+            V = Vi @ V
     return np.linalg.matrix_power(V, nsteps)
 
 
@@ -38,7 +39,7 @@ def main():
     hlist_mat = [h.as_field_operator().as_matrix((L,), translatt).todense() for h in hlist]
     Hmat = sum(hlist_mat)
 
-    comm_tab = fhc.NestedCommutatorTable(hlist, 5, translatt, bias=1e-8)
+    comm_tab = fhc.NestedCommutatorTable(hlist, 5, translatt)
     tab2 = comm_tab.table(2)
     tab4 = comm_tab.table(4)
     # example

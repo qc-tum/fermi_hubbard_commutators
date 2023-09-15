@@ -156,14 +156,14 @@ def _consists_of_number_ops(h: HamiltonianOp) -> bool:
            (isinstance(h, SumOp) and h.is_numop_sum()))
 
 
-def translate_origin(h: HamiltonianOp, translatt: SubLattice, bias: float = 0) -> HamiltonianOp:
+def translate_origin(h: HamiltonianOp, translatt: SubLattice) -> HamiltonianOp:
     """
     Translate operators such that their support is centered around the origin,
     assuming translation invariance with respect to `translatt`.
     """
     if isinstance(h, SumOp):
         # translate terms individually
-        h = SumOp([translate_origin(term, translatt, bias) for term in h.terms])
+        h = SumOp([translate_origin(term, translatt) for term in h.terms])
         # try to condense number operator terms further
         nidx = []
         for i, term in enumerate(h.terms):
@@ -198,5 +198,5 @@ def translate_origin(h: HamiltonianOp, translatt: SubLattice, bias: float = 0) -
     # check for empty support, e.g., ZeroOp
     if not supp:
         return h
-    shift = translatt.nearest_point(np.mean(np.array(supp), axis=0) - bias)
+    shift = translatt.nearest_center(supp)
     return h.translate([-x for x in shift])
