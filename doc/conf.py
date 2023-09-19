@@ -72,39 +72,24 @@ def linkcode_resolve(domain, info):
         return None
 
     modname = info["module"]
-    #####
-    ##print("modname:", modname)
-    #####
     topmodulename = modname.split('.')[0]
     modpath = pkg_resources.require(topmodulename)[0].location
-    ##print("modpath:", modpath)
 
     module = sys.modules.get(modname)
-    ####
-    ##print("module:", module)
-    #####
     if module is None:
         return None
 
     obj = module
     fullname = info["fullname"]
-    ##print("fullname:", fullname)
     for part in fullname.split('.'):
         obj = getattr(obj, part)
-    ####
-    #print("obj:", obj)
-    #####
 
     try:
         filepath = os.path.relpath(inspect.getsourcefile(obj), modpath)
-        ##print("filepath:", filepath)
         if filepath is None:
             return None
     except Exception:
        return None
-    ####
-    #print("obj after:", obj)
-    #####
 
     try:
         source, linenum = inspect.getsourcelines(obj)
@@ -114,24 +99,6 @@ def linkcode_resolve(domain, info):
         linestart, linestop = linenum, linenum + len(source) - 1
 
     return f"https://github.com/qc-tum/fermi_hubbard_commutators/tree/master/{filepath}#L{linestart}-L{linestop}"
-
-    #linkcode_url.format(
-        #filepath=filepath, linestart=linestart, linestop=linestop)
-
-# def linkcode_resolve(domain, info):
-#     """
-#     Code link resolve function for sphinx.ext.linkcode extension.
-#     """
-#     if domain != "py":
-#         return None
-#     if not info["module"]:
-#         return None
-#     filename = info["module"].replace(".", "/")
-#     if "fullname" in info:
-#         anchor = "#:~:text=" + info["fullname"].split(".")[-1]
-#     else:
-#         anchor = ""
-#     return f"https://github.com/qc-tum/fermi_hubbard_commutators/tree/master/{filename}.py{anchor}"
 
 
 # List of patterns, relative to source directory, that match files and
