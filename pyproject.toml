@@ -9,7 +9,7 @@ description = "Evaluating Trotter splitting errors based on commutator scaling f
 readme = "README.rst"
 authors = [{ name = "Christian B. Mendl", email = "christian.b.mendl@gmail.com" }]
 license = { text = "Apache-2.0" }
-requires-python = ">=3.7"
+requires-python = ">=3.10"
 dependencies = [
     "numpy",
     "scipy",
