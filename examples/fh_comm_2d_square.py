@@ -9,19 +9,19 @@ def main():
     u =  1  # other values can be included as prefactor depending on the number of interaction terms
 
     # construct a sub-lattice for translations
-    translatt = fhc.SubLattice(np.array([[1, 1], [1, -1]]))
+    translatt = fhc.SubLattice(np.array([[2, 0], [0, 2]]))
 
     # construct the Fermi-Hubbard Hamiltonian operators on a 2D square lattice
-    h0 = fhc.SumOp([fhc.HoppingOp(( 0,  0), ( 1,  0), s, v) for s in [0, 1]])
-    h1 = fhc.SumOp([fhc.HoppingOp((-1,  0), ( 0,  0), s, v) for s in [0, 1]])
-    h2 = fhc.SumOp([fhc.HoppingOp(( 0,  0), ( 0,  1), s, v) for s in [0, 1]])
-    h3 = fhc.SumOp([fhc.HoppingOp(( 0, -1), ( 0,  0), s, v) for s in [0, 1]])
-    h4 = fhc.SumOp([fhc.ProductOp([fhc.NumberOp((x, 0), s, 1) for s in [0, 1]], u) for x in [0, 1]])
-    hlist = [h0, h1, h2, h3, h4]
+    plaqcoords = [( 0,  0), ( 1,  0), ( 1,  1), ( 0,  1)]
+    plaqcshift = [(-1, -1), ( 0, -1), ( 0,  0), (-1,  0)]
+    h0 = fhc.SumOp([fhc.HoppingOp(plaqcoords[i], plaqcoords[(i + 1) % 4], s, v) for s in [0, 1] for i in range(4)])
+    h1 = fhc.SumOp([fhc.HoppingOp(plaqcshift[i], plaqcshift[(i + 1) % 4], s, v) for s in [0, 1] for i in range(4)])
+    h2 = fhc.SumOp([fhc.ProductOp([fhc.NumberOp(plaqcoords[i], s, 1) for s in [0, 1]], u) for i in range(4)])
+    hlist = [h0, h1, h2]
 
     # example
     print("[h0, h1]:", fhc.commutator_translation(h0, h1, translatt))
-    print("[h0, h4]:", fhc.commutator_translation(h0, h4, translatt))
+    print("[h0, h2]:", fhc.commutator_translation(h0, h2, translatt))
 
     comm_tab = fhc.NestedCommutatorTable(hlist, 5, translatt)
     tab1 = comm_tab.table(1)
@@ -30,14 +30,11 @@ def main():
     # example
     print("tab1[0][1]:", tab1[0][1])
     # example
-    print("tab2[0][4][1]:", tab2[0][4][1])
-    print("tab2[0][4][1].norm_bound():", tab2[0][4][1].norm_bound())
+    print("tab2[0][2][1]:", tab2[0][2][1])
+    print("tab2[0][2][1].norm_bound():", tab2[0][2][1].norm_bound())
     # example
-    print("tab2[1][3][4]:", tab2[1][3][4])
-    print("tab2[1][3][4].norm_bound():", tab2[1][3][4].norm_bound())
-    # example
-    print("tab4[0][4][4][4][4]:", tab4[0][4][4][4][4])
-    print("tab4[0][4][4][4][4].norm_bound():", tab4[0][4][4][4][4].norm_bound())
+    print("tab4[0][2][2][2][2]:", tab4[0][2][2][2][2])
+    print("tab4[0][2][2][2][2].norm_bound():", tab4[0][2][2][2][2].norm_bound())
 
     for methname in ["Strang", "Suzuki4"]:
         print(80 * "_")
