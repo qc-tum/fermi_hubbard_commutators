@@ -1,11 +1,15 @@
 Trotter error with commutator scaling for the Fermi-Hubbard model
 =================================================================
 
-.. image:: https://github.com/qc-tum/fermi_hubbard_commutators/actions/workflows/ci.yml/badge.svg?branch=master
+.. image:: https://github.com/qc-tum/fermi_hubbard_commutators/actions/workflows/ci.yml/badge.svg
   :target: https://github.com/qc-tum/fermi_hubbard_commutators/actions/workflows/ci.yml
 
 
-Python package for evaluating nested commutators between fermionic operators and computing Trotter splitting error bounds based on commutator scaling for the Fermi-Hubbard model, accompanying `arXiv:2306.10603 <https://arxiv.org/abs/2306.10603>`_.
+Python package for evaluating nested commutators between fermionic operators and computing Trotter splitting error bounds based on commutator scaling for the Fermi-Hubbard model, accompanying
+
+| Ansgar Schubert, Christian B. Mendl
+| *Trotter error with commutator scaling for the Fermi-Hubbard model*
+| `Phys. Rev. B 108, 195105 (2023) <https://doi.org/10.1103/PhysRevB.108.195105>`_ (`arXiv:2306.10603 <https://arxiv.org/abs/2306.10603>`_)
 
 
 Documentation

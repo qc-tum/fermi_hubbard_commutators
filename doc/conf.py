@@ -98,7 +98,7 @@ def linkcode_resolve(domain, info):
     else:
         linestart, linestop = linenum, linenum + len(source) - 1
 
-    return f"https://github.com/qc-tum/fermi_hubbard_commutators/tree/master/{filepath}#L{linestart}-L{linestop}"
+    return f"https://github.com/qc-tum/fermi_hubbard_commutators/tree/main/{filepath}#L{linestart}-L{linestop}"
 
 
 # List of patterns, relative to source directory, that match files and
